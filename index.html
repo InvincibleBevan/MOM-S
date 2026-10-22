@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Loving Memory - Julia Chepchirchir Siele</title>
+    <style>
+        body {
+            background-color: #2c2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        .flip-book {
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            display: none; /* Hidden until loaded */
+        }
+        .page {
+            background-color: #ffffff;
+            overflow: hidden;
+            border: solid 1px #e8e8e8;
+        }
+        .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures the whole page is visible without cropping */
+        }
+        .page.--left {
+            border-right: 0;
+            box-shadow: inset -7px 0 30px -7px rgba(0,0,0,0.4);
+        }
+        .page.--right {
+            border-left: 0;
+            box-shadow: inset 7px 0 30px -7px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The Book Container -->
+    <div class="flip-book" id="flip-book">
+        <!-- Pages arranged in the corrected chronological order -->
+        <div class="page"><img src="PAGE_1.jpg" alt="Front Cover"></div>
+        <div class="page"><img src="PAGE_2.jpg" alt="Funeral Programme"></div>
+        <div class="page"><img src="PAGE_3.jpg" alt="Eulogy - Early Life"></div>
+        <div class="page"><img src="PAGE_4.jpg" alt="Tributes"></div>
+        <div class="page"><img src="PAGE_5.jpg" alt="Life and Times"></div>
+        <div class="page"><img src="PAGE_6.jpg" alt="Health and Tributes"></div>
+        <div class="page"><img src="PAGE_7.jpg" alt="Hymns"></div>
+        <div class="page"><img src="PAGE_8.jpg" alt="Back Cover"></div>
+    </div>
+
+    <!-- Include the page-flip library -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookElement = document.getElementById('flip-book');
+            bookElement.style.display = 'block';
+
+            // Initialize the flipbook
+            const pageFlip = new St.PageFlip(bookElement, {
+                width: 420,  // Standard A5 booklet width
+                height: 594, // Standard A5 booklet height
+                size: "stretch",
+                minWidth: 315,
+                maxWidth: 1000,
+                minHeight: 420,
+                maxHeight: 1350,
+                showCover: true, // First and last pages act as hard covers
+                usePortrait: true // Allows single page view on mobile phones
+            });
+
+            // Load the pages
+            pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+        });
+    </script>
+</body>
+</html>
+
